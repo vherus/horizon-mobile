@@ -39,12 +39,12 @@ function TopTabsGroup() {
 const Drawer = createDrawerNavigator()
 
 function DrawerGroup() {
-    const { handleLogout } = useData()
+    const { handleLogout, token } = useData()
 
     return (
         <Drawer.Navigator screenOptions={{ headerShown: false }}>
             <Drawer.Screen name='TabGroup' component={TabGroup} options={{ title: 'Home' }} />
-            <Drawer.Screen name='Logout' component={TabGroup} options={{ title: 'Logout' }} listeners={{drawerItemPress: handleLogout }} />
+            {token && <Drawer.Screen name='Logout' component={TabGroup} options={{ title: 'Logout' }} listeners={{drawerItemPress: handleLogout }} />}
         </Drawer.Navigator>
     )
 }
@@ -74,7 +74,7 @@ function TabGroup({ navigation }) {
                 tabBarIcon: ({ focused }) => {
                     if (!route.name.includes('Character-') && route.name !== 'Login') {
                         return <Image
-                                    source={require("../assets/logo.png")}
+                                    source={focused ? require("../assets/logo.png") : require("../assets/logo-gs.png")}
                                     style={styles.headerMenu}
                                 />
                     }
@@ -97,6 +97,7 @@ function TabGroup({ navigation }) {
                 options={{
                     tabBarLabel: 'Home',
                     tabBarStyle: styles.bar,
+                    tabBarLabelStyle: styles.barLabel,
                     tabBarActiveTintColor: '#50b4d6',
                     title: 'HorizonXI',
                     headerLeft: () => (
@@ -106,9 +107,9 @@ function TabGroup({ navigation }) {
                     )
                 }}
             />
-            {token && profile?.chars?.map((char, i) => (<Tab.Screen key={i+1} name={`Character-${char.avatar}`} component={Seeking} options={{ title: char.name,tabBarLabel: char.name, tabBarStyle: styles.bar, tabBarActiveTintColor: '#50b4d6' }} />))}
+            {token && profile?.chars?.map((char, i) => (<Tab.Screen key={i+1} name={`Character-${char.avatar}`} component={Seeking} options={{ tabBarLabelStyle: styles.barLabel, title: char.name,tabBarLabel: char.name, tabBarStyle: styles.bar, tabBarActiveTintColor: '#50b4d6' }} />))}
 
-            {!token && <Tab.Screen name='Login' component={Login} options={{ tabBarLabel: 'Login', tabBarStyle: styles.bar, tabBarActiveTintColor: '#50b4d6' }} />}
+            {!token && <Tab.Screen name='Login' component={Login} options={{ tabBarLabel: 'Login', tabBarStyle: styles.bar, tabBarActiveTintColor: '#50b4d6', tabBarLabelStyle: styles.barLabel }} />}
             
         </Tab.Navigator>
     )
@@ -129,6 +130,10 @@ const styles = StyleSheet.create({
     bar: {
         height: 90,
         paddingBottom: 10
+    },
+    barLabel: {
+        fontWeight: 'bold',
+        fontSize: 12
     },
     tabIcon: {
         width: 40,
