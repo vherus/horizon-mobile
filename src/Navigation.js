@@ -75,7 +75,7 @@ function TabGroup({ navigation }) {
                     if (!route.name.includes('Character-') && route.name !== 'Login') {
                         return <Image
                                     source={focused ? require('../assets/logo.png') : require('../assets/logo-gs.png')}
-                                    style={styles.headerMenu}
+                                    style={styles.headerlogo}
                                 />
                     }
 
@@ -95,7 +95,7 @@ function TabGroup({ navigation }) {
                 name='HorizonXI'
                 component={StackGroup}
                 options={{
-                    tabBarLabel: 'Home',
+                    tabBarLabel: '',
                     tabBarStyle: styles.bar,
                     tabBarLabelStyle: styles.barLabel,
                     tabBarActiveTintColor: '#50b4d6',
@@ -153,6 +153,13 @@ const styles = StyleSheet.create({
         height: 45,
         borderRadius: 50,
         marginTop: 14,
+        marginLeft: 3
+    },
+    headerlogo: {
+        width: 60,
+        height: 60,
+        borderRadius: 50,
+        marginTop: 22,
         marginLeft: 3
     },
     hamburger: {
