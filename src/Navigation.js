@@ -85,7 +85,17 @@ function TabGroup({ navigation }) {
 
                     const face = route.name.substring(route.name.indexOf('-')+1)
 
-                    return <Image style={styles.tabIcon} source={{ uri: `https://horizonxi.com/images/account/create-character/face/${face}.webp` }} />
+                    return (
+                        <>
+                            {focused && <Image style={styles.tabIcon} source={{ uri: `https://horizonxi.com/images/account/create-character/face/${face}.webp` }} />}
+                            {!focused && 
+                                <>
+                                    <Image style={{ tintColor: 'gray' }} source={{ uri: `https://horizonxi.com/images/account/create-character/face/${face}.webp` }} />
+                                    <Image style={{...styles.tabIcon, opacity: 0.5 }} source={{ uri: `https://horizonxi.com/images/account/create-character/face/${face}.webp` }} />
+                                </>
+                            }
+                        </>
+                    )
                 },
                 tabBarActiveTintColor: '#374450',
                 tabBarInactiveTintColor: '#374450'
