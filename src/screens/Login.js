@@ -1,7 +1,7 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-import useData from "../hooks/useData";
-import { useState } from "react";
-import { Pressable, StyleSheet, TextInput, Text, View } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context'
+import useData from '../hooks/useData'
+import { useState } from 'react'
+import { Pressable, StyleSheet, TextInput, Text, View } from 'react-native'
 
 export default function Login() {
     const [username, setUsername] = useState('')
@@ -15,14 +15,14 @@ export default function Login() {
                 style={styles.input}
                 value={username}
                 onChangeText={setUsername}
-                placeholder="Username"
+                placeholder='Username'
             />
             <TextInput
                 style={styles.input}
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry={true}
-                placeholder="Password"
+                placeholder='Password'
             />
             <Pressable onPress={() => handleLogin(username, password)}>
                 <View style={styles.button}>
@@ -49,14 +49,14 @@ const styles = StyleSheet.create({
         borderWidth: StyleSheet.hairlineWidth
     },
     button: {
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#50b4d6",
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#50b4d6',
         padding: 6,
         borderRadius: 8
     },
     buttonText: {
-        color: "#FFFFFF",
+        color: '#FFFFFF',
         padding: 8,
         fontSize: 16,
     }

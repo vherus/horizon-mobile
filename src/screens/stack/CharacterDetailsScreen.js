@@ -1,7 +1,7 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import CharacterDetails from "../../components/CharacterDetails";
-import { useLayoutEffect } from "react";
+import { useNavigation, useRoute } from '@react-navigation/native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import CharacterDetails from '../../components/CharacterDetails'
+import { useLayoutEffect } from 'react'
 
 export default function CharacterDetailsScreen() {
     const navigation = useNavigation()

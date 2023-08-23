@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, View, Image, Text, useColorScheme } from "react-native";
+import React from 'react'
+import { StyleSheet, View, Image, Text, useColorScheme } from 'react-native'
 
 const avatar = (avatarId) => {
     return <Image style={styles.avatar} source={{ uri: `https://horizonxi.com/images/account/create-character/face/${avatarId}.webp` }} />;
@@ -33,7 +33,7 @@ const CharacterDetails = ({ character }) => {
                             numberOfLines={1}
                             style={[
                                 styles.header,
-                                { color: theme === "dark" ? "#FFF" : "#000" },
+                                { color: theme === 'dark' ? '#FFF' : '#000' },
                             ]}
                         >
                             {character.charname}
@@ -43,7 +43,7 @@ const CharacterDetails = ({ character }) => {
                     <Text
                         style={[
                         styles.description,
-                        { color: theme === "dark" ? "#FFF" : "#000" },
+                        { color: theme === 'dark' ? '#FFF' : '#000' },
                         ]}
                     >
                         {character.jobString}
@@ -58,7 +58,7 @@ const CharacterDetails = ({ character }) => {
                         style={[
                         styles.description,
                         styles.seacom,
-                        { color: theme === "dark" ? "#FFF" : "#000" },
+                        { color: theme === 'dark' ? '#FFF' : '#000' },
                         ]}
                         >
                             {character.seacom_message}
@@ -72,7 +72,7 @@ const CharacterDetails = ({ character }) => {
 
 const styles = StyleSheet.create({
     gray: {
-        color: "#777",
+        color: '#777',
         fontSize: 14
     },
     avatar: {
@@ -89,14 +89,14 @@ const styles = StyleSheet.create({
     },
     header: {
         fontSize: 18,
-        fontWeight: "bold",
+        fontWeight: 'bold',
         paddingBottom: 4,
         paddingRight: 4,
-        color: "#000",
+        color: '#000',
     },
     description: {
         fontSize: 14,
-        color: "#000",
+        color: '#000',
     },
     seacom: {
         fontStyle: 'italic'
@@ -108,10 +108,10 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     rowTop: {
-        flexDirection: "row",
+        flexDirection: 'row',
     },
     row: {
-        flexDirection: "row",
+        flexDirection: 'row',
     },
     contentContainer: {
         flexShrink: 1,

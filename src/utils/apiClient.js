@@ -1,4 +1,4 @@
-import { API_URL } from "./constants"
+import { API_URL } from './constants'
 
 async function makeRequest(resource) {
     const response = await fetch(`${API_URL}/${resource}`)

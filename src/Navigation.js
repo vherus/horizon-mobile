@@ -10,8 +10,8 @@ import { Image, Pressable, StyleSheet, useColorScheme } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import useData from './hooks/useData'
 import Login from './screens/Login'
-import { AntDesign } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons'
+import { FontAwesome } from '@expo/vector-icons'
 
 const TopTabs = createMaterialTopTabNavigator()
 
@@ -74,7 +74,7 @@ function TabGroup({ navigation }) {
                 tabBarIcon: ({ focused }) => {
                     if (!route.name.includes('Character-') && route.name !== 'Login') {
                         return <Image
-                                    source={focused ? require("../assets/logo.png") : require("../assets/logo-gs.png")}
+                                    source={focused ? require('../assets/logo.png') : require('../assets/logo-gs.png')}
                                     style={styles.headerMenu}
                                 />
                     }
@@ -102,7 +102,7 @@ function TabGroup({ navigation }) {
                     title: 'HorizonXI',
                     headerLeft: () => (
                         <Pressable onPress={() => navigation.openDrawer()}>
-                          <AntDesign name="menuunfold" size={24} color='#50b4d6' style={styles.hamburger} />
+                            <AntDesign name='menuunfold' size={24} color='#50b4d6' style={styles.hamburger} />
                         </Pressable>
                     )
                 }}
