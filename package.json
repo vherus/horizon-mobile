@@ -1,6 +1,10 @@
 {
   "name": "horizon-mobile",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "author": {
+    "name": "Rhul",
+    "url": "https://github.com/vherus"
+  },
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
