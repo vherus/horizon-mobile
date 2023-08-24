@@ -66,6 +66,51 @@ const CharacterDetails = ({ character }) => {
                     }
                 </View>
             </View>
+
+            <View style={styles.itemGrid}>
+                <View style={styles.itemRow}>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/16466.png' }}/>
+                    </View>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/12290.png' }}/>
+                    </View>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/17152.png' }}/>
+                    </View>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/17318.png' }}/>
+                    </View>
+                </View>
+                <View style={styles.itemRow}>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/12454.png' }}/>
+                    </View>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/16466.png' }}/>
+                    </View>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/16466.png' }}/>
+                    </View>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/17152.png' }}/>
+                    </View>
+                </View>
+                <View style={styles.itemRow}>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/16466.png' }}/>
+                    </View>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/16466.png' }}/>
+                    </View>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/16466.png' }}/>
+                    </View>
+                    <View style={styles.itemColumn}>
+                        <Image style={styles.itemImg} source={{ uri: 'https://static.ffxiah.com/images/icon/17152.png' }}/>
+                    </View>
+                </View>
+            </View>
         </View>
     )
 }
@@ -112,11 +157,33 @@ const styles = StyleSheet.create({
     },
     row: {
         flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    itemRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 12
+    },
+    itemGrid: {
+        justifyContent: 'space-between',
+        marginTop: 20
     },
     contentContainer: {
         flexShrink: 1,
         flexGrow: 1,
     },
+    itemColumn: {
+        height: 80,
+        width: 80,
+        borderRadius: 10,
+        justifyContent: 'center',
+        backgroundColor: 'white',
+        alignItems: 'center'
+    },
+    itemImg: {
+        height: 55,
+        width: 55
+    }
 })
 
 export default CharacterDetails

@@ -4,6 +4,7 @@ import useData from '../hooks/useData';
 import Seeking from '../screens/Seeking';
 import Login from '../screens/Login';
 import HomeStackGroup from './HomeStackGroup';
+import { STYLES } from '../utils/constants';
 
 const { createBottomTabNavigator } = require('@react-navigation/bottom-tabs')
 
@@ -24,7 +25,7 @@ export default function BottomRouter({ navigation }) {
                     }
 
                     if (route.name === 'Login') {
-                        return <FontAwesome name="sign-in" style={styles.navItem} size={40} color={focused ? '#50b4d6' : '#374450'} />
+                        return <FontAwesome name="sign-in" style={styles.navItem} size={40} color={focused ? STYLES.primaryColour : STYLES.secondaryColour} />
                     }
 
                     const face = route.name.substring(route.name.indexOf('-')+1)
@@ -41,8 +42,8 @@ export default function BottomRouter({ navigation }) {
                         </>
                     )
                 },
-                tabBarActiveTintColor: '#374450',
-                tabBarInactiveTintColor: '#374450'
+                tabBarActiveTintColor: STYLES.secondaryColour,
+                tabBarInactiveTintColor: STYLES.secondaryColour
             })}
         >
             <Tab.Screen
@@ -52,18 +53,44 @@ export default function BottomRouter({ navigation }) {
                     tabBarLabel: '',
                     tabBarStyle: styles.bar,
                     tabBarLabelStyle: styles.barLabel,
-                    tabBarActiveTintColor: '#50b4d6',
+                    tabBarActiveTintColor: STYLES.primaryColour,
                     title: 'HorizonXI',
                     headerLeft: () => (
                         <Pressable onPress={() => navigation.openDrawer()}>
-                            <AntDesign name='menuunfold' size={24} color='#50b4d6' style={styles.hamburger} />
+                            <AntDesign name='menuunfold' size={24} color={STYLES.primaryColour} style={styles.hamburger} />
                         </Pressable>
                     )
                 }}
             />
-            {token && profile?.chars?.map((char, i) => (<Tab.Screen key={i+1} name={`Character-${char.avatar}`} component={Seeking} options={{ tabBarLabelStyle: styles.barLabel, title: char.name,tabBarLabel: char.name, tabBarStyle: styles.bar, tabBarActiveTintColor: '#50b4d6' }} />))}
+            {token && 
+                profile?.chars?.map((char, i) => (
+                    <Tab.Screen
+                        key={i+1}
+                        name={`Character-${char.avatar}`}
+                        component={Seeking}
+                        options={{
+                            tabBarLabelStyle: styles.barLabel,
+                            title: char.name,
+                            tabBarLabel: char.name,
+                            tabBarStyle: styles.bar,
+                            tabBarActiveTintColor: STYLES.primaryColour
+                        }}
+                    />
+                ))
+            }
 
-            {!token && <Tab.Screen name='Login' component={Login} options={{ tabBarLabel: 'Login', tabBarStyle: styles.bar, tabBarActiveTintColor: '#50b4d6', tabBarLabelStyle: styles.barLabel }} />}
+            {!token && 
+                <Tab.Screen
+                    name='Login'
+                    component={Login}
+                    options={{
+                        tabBarLabel: 'Login',
+                        tabBarStyle: styles.bar,
+                        tabBarActiveTintColor: STYLES.primaryColour,
+                        tabBarLabelStyle: styles.barLabel
+                    }}
+                />
+            }
             
         </Tab.Navigator>
     )
