@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler'
-import Navigation from './src/Navigation'
 import { DataProvider } from './src/context/DataContext'
+import Navigation from './src/routing/Navigation'
 
 export default function App() {
     return (
