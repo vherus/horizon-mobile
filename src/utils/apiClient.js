@@ -15,6 +15,10 @@ export function getChar(name) {
     return makeRequest(`/chars/${name}`)
 }
 
+export function getEquipment(charName) {
+    return makeRequest(`/chars/${charName}/equip`)
+}
+
 export async function getProfile(token) {
     const response = await fetch(`${API_URL}/accounts/profile`, {
         headers: {

@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { Pressable } from 'react-native'
-import CharacterDetails from './CharacterDetails'
+import CharacterDetailsCard from './CharacterDetailsCard'
 
 export default function Character({ character }) {
     const { navigate } = useNavigation()
@@ -11,7 +11,7 @@ export default function Character({ character }) {
                 navigate('CharacterDetailsScreen', { character })
             }}
         >
-            <CharacterDetails character={character} />
+            <CharacterDetailsCard character={character} />
         </Pressable>
     )
 }

@@ -7,8 +7,6 @@ const DataProvider = ({ children }) => {
     const [chars, setChars] = useState({})
     const [token, setToken] = useState(null)
     const [profile, setProfile] = useState({})
-    console.log('token:', token)
-    console.log(profile)
 
     const refreshChars = () => {
         setChars(() => {
