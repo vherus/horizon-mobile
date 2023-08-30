@@ -10,10 +10,11 @@ import {
 import Character from '../components/Character'
 import { useState } from 'react'
 import useData from '../hooks/useData'
+import ContentLoader from 'react-content-loader/native'
   
 export default function Players() {
     const [searchQuery, setSearchQuery] = useState('')
-    const { chars, refreshChars } = useData()
+    const { chars, refreshChars, isRefreshing } = useData()
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -31,7 +32,12 @@ export default function Players() {
                 keyExtractor={(item) => {
                     return item.charname;
                 }}
+                onRefresh={refreshChars}
+                refreshing={isRefreshing}
                 renderItem={({ item }) => {
+                    if (isRefreshing) {
+                        return <ContentLoader width={'100%'} backgroundColor='#50b4d6' style={styles.loader} foregroundColor='#ccc' speed={0.5} />
+                    } 
                     return <Character character={item} />;
                 }}
                 ListHeaderComponent={() => (
@@ -69,4 +75,8 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         fontSize: 14,
     },
+    loader: {
+        marginLeft: 20,
+        width: '50%'
+    }
 })

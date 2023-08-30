@@ -7,11 +7,25 @@ const DataProvider = ({ children }) => {
     const [chars, setChars] = useState({})
     const [token, setToken] = useState(null)
     const [profile, setProfile] = useState({})
+    const [isRefreshing, setIsRefreshing] = useState(false)
 
     const refreshChars = () => {
-        setChars(() => {
-            getChars().then(setChars)
-            return {}
+        setIsRefreshing(() => {
+            setChars(() => {
+                getChars().then(data => {
+                    setChars(() => {
+                        setIsRefreshing(false)
+                        return data
+                    })
+                })
+                return {
+                    chars: [
+                        { charname: 1 },{ charname: 2 },{ charname: 3 },{ charname: 4 },
+                    ]
+                }
+            })
+
+            return true
         })
     }
 
@@ -38,6 +52,7 @@ const DataProvider = ({ children }) => {
         chars,
         token,
         profile,
+        isRefreshing,
         refreshChars,
         handleLogin,
         handleLogout
