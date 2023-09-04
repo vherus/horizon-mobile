@@ -1,5 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Image, Text, useColorScheme } from 'react-native'
+import formatAutoTranslateMessage from '../utils/autoTranslate';
+import { SEACOM_TYPES } from '../utils/constants';
 
 const avatar = (avatarId) => {
     return <Image style={styles.avatar} source={{ uri: `https://horizonxi.com/images/account/create-character/face/${avatarId}.webp` }} />;
@@ -54,15 +56,19 @@ const CharacterDetailsCard = ({ character }) => {
                         <GrayText>&nbsp;{character.rank}</GrayText>
                     </Text>
                     {character.seacom_message &&
-                        <Text
-                            style={[
-                            styles.description,
-                            styles.seacom,
-                            { color: theme === 'dark' ? '#FFF' : '#000' },
-                            ]}
-                        >
-                            {character.seacom_message}
-                        </Text>
+                        <View>
+                            <Text style={[styles.seacomType, { color: SEACOM_TYPES[character.seacom_type].color }]}>• {SEACOM_TYPES[character.seacom_type].type}</Text>
+                            <Text
+                                style={[
+                                styles.description,
+                                styles.seacom,
+                                { color: theme === 'dark' ? '#FFF' : '#000' },
+                                ]}
+                            >
+                                
+                                {formatAutoTranslateMessage(character.seacom_message)}
+                            </Text>
+                        </View>
                     }
                 </View>
             </View>
@@ -96,10 +102,14 @@ const styles = StyleSheet.create({
     },
     description: {
         fontSize: 14,
-        color: '#000',
+        color: '#000'
     },
     seacom: {
-        fontStyle: 'italic',
+        fontStyle: 'italic'
+    },
+    seacomType: {
+        fontSize: 12,
+        fontStyle: 'italic'
     },
     singleItem: {
         paddingHorizontal: 16,
