@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from 'react-native'
 
 export default function EquipmentGrid({ equipment }) {
     const getImage = (slot) => {
@@ -73,8 +73,6 @@ export default function EquipmentGrid({ equipment }) {
                     </View>
                 </View>
             }
-
-            {!equipment && <Text style={styles.itemGrid}>Loading equipment...</Text>}
         </>
     )
 }
@@ -87,7 +85,7 @@ const styles = StyleSheet.create({
     },
     itemGrid: {
         justifyContent: 'space-between',
-        marginTop: 20,
+        marginTop: 60,
         padding: 20
     },
     itemColumn: {
