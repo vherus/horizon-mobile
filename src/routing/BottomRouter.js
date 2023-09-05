@@ -1,11 +1,10 @@
 import { Image, Pressable, StyleSheet } from 'react-native'
-import { FontAwesome, AntDesign } from '@expo/vector-icons';
-import useData from '../hooks/useData';
-import Seeking from '../screens/Seeking';
-import Login from '../screens/Login';
-import HomeStackGroup from './HomeStackGroup';
-import { STYLES } from '../utils/constants';
-import MyCharacter from '../screens/MyCharacter';
+import { FontAwesome, AntDesign } from '@expo/vector-icons'
+import useData from '../hooks/useData'
+import Login from '../screens/Login'
+import HomeStackGroup from './HomeStackGroup'
+import { STYLES } from '../utils/constants'
+import MyCharacterRouter from './MyCharacterRouter'
 
 const { createBottomTabNavigator } = require('@react-navigation/bottom-tabs')
 
@@ -68,7 +67,7 @@ export default function BottomRouter({ navigation }) {
                     <Tab.Screen
                         key={i+1}
                         name={`Character-${char.avatar}`}
-                        children={() => <MyCharacter char={char} />}
+                        children={() => <MyCharacterRouter char={char} />}
                         options={{
                             tabBarLabelStyle: styles.barLabel,
                             title: char.name,

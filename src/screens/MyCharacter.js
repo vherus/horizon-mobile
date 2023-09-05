@@ -1,17 +1,16 @@
-import { StyleSheet, Text, Image, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import useData from '../hooks/useData'
 import { useEffect, useState } from 'react'
 import { getChar, getEquipment } from '../utils/apiClient'
 import ContentLoader from 'react-content-loader/native'
 import CharacterDetailsCard from '../components/CharacterDetailsCard'
 import EquipmentGrid from '../components/EquipmentGrid'
-import { useNavigation } from '@react-navigation/native'
 
 export default function MyCharacter({ char }) {
     const { getBalance } = useData()
     const [equipment, setEquipment] = useState(null)
     const [character, setCharacter] = useState(null)
-    const navigation = useNavigation()
+    const [balance, setBalance] = useState(null)
 
     useEffect(() => {
         getChar(char.name).then(c => {
@@ -19,11 +18,7 @@ export default function MyCharacter({ char }) {
             setCharacter(c)
         })
 
-        getBalance(char.name).then(b => {
-            navigation.setOptions({
-                headerTitle: () => <Text style={styles.gilWrapper}><Image style={styles.gil} source={require('../../assets/gil.png')} />&nbsp;{b.toLocaleString('en')}</Text>
-            })
-        })
+        getBalance(char.name).then(setBalance)
 
         getEquipment(char.name).then(setEquipment)
     }, [])
@@ -34,7 +29,7 @@ export default function MyCharacter({ char }) {
 
             {equipment && character && (
                 <>
-                    <CharacterDetailsCard character={character} />
+                    <CharacterDetailsCard character={character} balance={balance} hideName={true} />
                     <EquipmentGrid equipment={equipment} />
                 </>
             )}
@@ -47,16 +42,6 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         marginTop: 10,
         width: '50%'
-    },
-    gilWrapper: {
-        lineHeight: 20,
-        marginBottom: 20,
-        fontSize: 18
-    },
-    gil: {
-        maxHeight: 30,
-        maxWidth: 30,
-        marginBottom: -8
     },
     container: {
         marginTop: 10

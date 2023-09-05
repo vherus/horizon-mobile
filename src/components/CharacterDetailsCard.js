@@ -22,7 +22,7 @@ const GrayText = ({ children, numberOfLines, style }) => {
     )
 }
 
-const CharacterDetailsCard = ({ character, hideName = false }) => {
+const CharacterDetailsCard = ({ character, hideName = false, balance = null }) => {
     const theme = useColorScheme()
 
     return (
@@ -44,10 +44,12 @@ const CharacterDetailsCard = ({ character, hideName = false }) => {
                         </View>
                     }
 
+                    {balance !== null && <Text style={styles.gilWrapper}><Image style={styles.gil} source={require('../../assets/gil.png')} />&nbsp;{balance.toLocaleString('en')}</Text>}
+
                     <Text
                         style={[
-                        styles.description,
-                        { color: theme === 'dark' ? '#FFF' : '#000' },
+                            styles.description,
+                            { color: theme === 'dark' ? '#FFF' : '#000' },
                         ]}
                     >
                         {character.jobString}
@@ -91,6 +93,15 @@ const styles = StyleSheet.create({
         marginRight: 16,
         marginTop: 5,
         flexShrink: 0,
+    },
+    gilWrapper: {
+        marginTop: 5,
+        fontSize: 14
+    },
+    gil: {
+        maxHeight: 20,
+        maxWidth: 20,
+        marginBottom: -4
     },
     nation: {
         height: 18,
