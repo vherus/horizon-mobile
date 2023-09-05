@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import { getChars, getProfile, postLogin } from '../utils/apiClient'
+import { getBalance, getChars, getProfile, postLogin } from '../utils/apiClient'
 
 const DataContext = createContext()
 
@@ -44,6 +44,10 @@ const DataProvider = ({ children }) => {
         setProfile({})
     }
 
+    const getGilBalance = (charname) => {
+        return getBalance(token, charname)
+    }
+
     useEffect(() => {
         refreshChars()
     }, [])
@@ -55,7 +59,8 @@ const DataProvider = ({ children }) => {
         isRefreshing,
         refreshChars,
         handleLogin,
-        handleLogout
+        handleLogout,
+        getBalance: getGilBalance
     }
 
     return <DataContext.Provider value={value}>{children}</DataContext.Provider>

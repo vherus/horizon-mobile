@@ -7,6 +7,19 @@ async function makeRequest(resource) {
     return json
 }
 
+async function makeAuthenticatedRequest(url, token) {
+    const response = await fetch(url, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        method: 'GET'
+    })
+
+    const json = await response.json()
+
+    return json
+}
+
 export function getChars() {
     return makeRequest('/chars')
 }
@@ -20,16 +33,11 @@ export function getEquipment(charName) {
 }
 
 export async function getProfile(token) {
-    const response = await fetch(`${API_URL}/accounts/profile`, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        },
-        method: 'GET'
-    })
+    return makeAuthenticatedRequest(`${API_URL}/accounts/profile`, token)
+}
 
-    const json = await response.json()
-
-    return json
+export async function getBalance(token, charname) {
+    return makeAuthenticatedRequest(`${API_URL}/chars/${charname}/balance`, token)
 }
 
 export async function postLogin(username, password) {
