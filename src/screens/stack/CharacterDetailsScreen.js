@@ -5,7 +5,7 @@ import { useLayoutEffect, useState } from 'react'
 import EquipmentGrid from '../../components/EquipmentGrid'
 import { getEquipment } from '../../utils/apiClient'
 import ContentLoader from 'react-content-loader/native'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 export default function CharacterDetailsScreen() {
     const [equipment, setEquipment] = useState(null)
@@ -24,24 +24,27 @@ export default function CharacterDetailsScreen() {
     }, [])
 
     return (
-        <SafeAreaView>
+        <View style={styles.container}>
             {!equipment && <ContentLoader width={'100%'} backgroundColor='#50b4d6' style={styles.loader} foregroundColor='#ccc' speed={0.5} />}
 
             {equipment && (
                 <>
-                    <CharacterDetailsCard character={params.character} />
+                    <CharacterDetailsCard character={params.character} hideName={true} />
                     <EquipmentGrid equipment={equipment} />
                 </>
             )}
             
-        </SafeAreaView>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     loader: {
         marginLeft: 20,
-        marginTop: 50,
+        marginTop: 10,
         width: '50%'
+    },
+    container: {
+        marginTop: 10
     }
 })

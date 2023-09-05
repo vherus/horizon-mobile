@@ -1,5 +1,4 @@
-import { StyleSheet, Text, Image } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { StyleSheet, Text, Image, View } from 'react-native'
 import useData from '../hooks/useData'
 import { useEffect, useState } from 'react'
 import { getChar, getEquipment } from '../utils/apiClient'
@@ -25,12 +24,12 @@ export default function MyCharacter({ char }) {
                 headerTitle: () => <Text style={styles.gilWrapper}><Image style={styles.gil} source={require('../../assets/gil.png')} />&nbsp;{b.toLocaleString('en')}</Text>
             })
         })
-        
+
         getEquipment(char.name).then(setEquipment)
     }, [])
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <View style={styles.container}>
             {!equipment && !character && <ContentLoader width={'100%'} backgroundColor='#50b4d6' style={styles.loader} foregroundColor='#ccc' speed={0.5} />}
 
             {equipment && character && (
@@ -39,14 +38,14 @@ export default function MyCharacter({ char }) {
                     <EquipmentGrid equipment={equipment} />
                 </>
             )}
-        </SafeAreaView>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     loader: {
         marginLeft: 20,
-        marginTop: 50,
+        marginTop: 10,
         width: '50%'
     },
     gilWrapper: {
@@ -59,4 +58,7 @@ const styles = StyleSheet.create({
         maxWidth: 30,
         marginBottom: -8
     },
+    container: {
+        marginTop: 10
+    }
 })

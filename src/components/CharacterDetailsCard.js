@@ -22,7 +22,7 @@ const GrayText = ({ children, numberOfLines, style }) => {
     )
 }
 
-const CharacterDetailsCard = ({ character }) => {
+const CharacterDetailsCard = ({ character, hideName = false }) => {
     const theme = useColorScheme()
 
     return (
@@ -30,17 +30,19 @@ const CharacterDetailsCard = ({ character }) => {
             <View style={styles.row}>
                 {avatar(character.avatar)}
                 <View style={styles.contentContainer}>
-                    <View style={styles.rowTop}>
-                        <Text
-                            numberOfLines={1}
-                            style={[
-                                styles.header,
-                                { color: theme === 'dark' ? '#FFF' : '#000' },
-                            ]}
-                        >
-                            {character.charname}
-                        </Text>
-                    </View>
+                    {!hideName && 
+                        <View style={styles.rowTop}>
+                            <Text
+                                numberOfLines={1}
+                                style={[
+                                    styles.header,
+                                    { color: theme === 'dark' ? '#FFF' : '#000' },
+                                ]}
+                            >
+                                {character.charname}
+                            </Text>
+                        </View>
+                    }
 
                     <Text
                         style={[
@@ -83,12 +85,12 @@ const styles = StyleSheet.create({
         fontSize: 14
     },
     avatar: {
-        height: 44,
-        width: 44,
-        borderRadius: 22,
+        height: 50,
+        width: 50,
+        borderRadius: 50,
         marginRight: 16,
+        marginTop: 5,
         flexShrink: 0,
-        marginTop: 4,
     },
     nation: {
         height: 18,
@@ -113,22 +115,20 @@ const styles = StyleSheet.create({
         fontStyle: 'italic'
     },
     singleItem: {
-        paddingHorizontal: 16,
         minHeight: 44,
-        flex: 1,
+        display: 'flex',
+        // paddingLeft: 16,
         padding: 16,
-        marginBottom: 20
     },
     rowTop: {
         flexDirection: 'row',
     },
     row: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
     },
     contentContainer: {
-        flexShrink: 1,
         flexGrow: 1,
+        flexShrink: 1
     },
 })
 

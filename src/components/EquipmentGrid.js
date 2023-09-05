@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     },
     itemGrid: {
         justifyContent: 'space-between',
-        marginTop: 60,
+        // marginTop: 60,
         padding: 20
     },
     itemColumn: {
