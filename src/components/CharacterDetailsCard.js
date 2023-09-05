@@ -55,6 +55,7 @@ const CharacterDetailsCard = ({ character }) => {
                         </GrayText>
                         <GrayText>&nbsp;{character.rank}</GrayText>
                     </Text>
+                    
                     {character.seacom_message &&
                         <View>
                             <Text style={[styles.seacomType, { color: SEACOM_TYPES[character.seacom_type].color }]}>• {SEACOM_TYPES[character.seacom_type].type}</Text>
@@ -80,6 +81,14 @@ const styles = StyleSheet.create({
     gray: {
         color: '#777',
         fontSize: 14
+    },
+    gilWrapper: {
+        lineHeight: 15,
+        marginTop: 5
+    },
+    gil: {
+        maxHeight: 20,
+        maxWidth: 20
     },
     avatar: {
         height: 44,
