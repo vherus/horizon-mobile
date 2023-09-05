@@ -82,14 +82,6 @@ const styles = StyleSheet.create({
         color: '#777',
         fontSize: 14
     },
-    gilWrapper: {
-        lineHeight: 15,
-        marginTop: 5
-    },
-    gil: {
-        maxHeight: 20,
-        maxWidth: 20
-    },
     avatar: {
         height: 44,
         width: 44,

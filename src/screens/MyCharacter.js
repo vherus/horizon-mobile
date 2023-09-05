@@ -10,7 +10,6 @@ import { useNavigation } from '@react-navigation/native'
 
 export default function MyCharacter({ char }) {
     const { getBalance } = useData()
-    const [balance, setBalance] = useState(0)
     const [equipment, setEquipment] = useState(null)
     const [character, setCharacter] = useState(null)
     const navigation = useNavigation()
@@ -20,13 +19,13 @@ export default function MyCharacter({ char }) {
             c.charname = char.name
             setCharacter(c)
         })
+
         getBalance(char.name).then(b => {
             navigation.setOptions({
                 headerTitle: () => <Text style={styles.gilWrapper}><Image style={styles.gil} source={require('../../assets/gil.png')} />&nbsp;{b.toLocaleString('en')}</Text>
             })
-
-            setBalance(b)
         })
+        
         getEquipment(char.name).then(setEquipment)
     }, [])
 
