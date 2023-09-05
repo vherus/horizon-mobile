@@ -40,6 +40,10 @@ export async function getBalance(token, charname) {
     return makeAuthenticatedRequest(`${API_URL}/chars/${charname}/balance`, token)
 }
 
+export async function getDeliveries(token, charname) {
+    return makeAuthenticatedRequest(`${API_URL}/chars/${charname}/delivery-box`, token)
+}
+
 export async function postLogin(username, password) {
     const response = await fetch(`${API_URL}/accounts/login`, {
         headers: {

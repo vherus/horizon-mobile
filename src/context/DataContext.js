@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import { getBalance, getChars, getProfile, postLogin } from '../utils/apiClient'
+import { getBalance, getChars, getDeliveries, getProfile, postLogin } from '../utils/apiClient'
 
 const DataContext = createContext()
 
@@ -48,6 +48,10 @@ const DataProvider = ({ children }) => {
         return getBalance(token, charname)
     }
 
+    const getDeliveryBox = (charname) => {
+        return getDeliveries(token, charname)
+    }
+
     useEffect(() => {
         refreshChars()
     }, [])
@@ -60,7 +64,8 @@ const DataProvider = ({ children }) => {
         refreshChars,
         handleLogin,
         handleLogout,
-        getBalance: getGilBalance
+        getBalance: getGilBalance,
+        getDeliveryBox
     }
 
     return <DataContext.Provider value={value}>{children}</DataContext.Provider>
